@@ -1,1 +1,2 @@
 testting ghit repo
+adding line  into gitrep.txt
