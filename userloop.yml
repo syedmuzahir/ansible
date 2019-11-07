@@ -1,0 +1,14 @@
+---
+- name: creating multiple users
+  hosts: 192.168.0.191
+  tasks: 
+    - name: creating all users
+      user:
+       name: "{{ item }}"
+       state: absent
+      with_items:
+       - linoop1
+       - linoop2
+       - linoop3
+       - ghazanfar
+       - zeeshan

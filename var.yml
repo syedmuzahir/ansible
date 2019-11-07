@@ -1,0 +1,19 @@
+---
+- name: packages installed
+  hosts: 192.168.0.191
+  vars: 
+    pack1: httpd
+    pack4: vsftpd
+  tasks:
+  - name: packages
+    yum:  
+      name:
+        - "{{ pack1 }}"
+        - "{{ pack4 }}"
+      state: present
+  - name: start services
+    service:
+      name: httpd
+      name: vsftpd
+      state: restarted
+

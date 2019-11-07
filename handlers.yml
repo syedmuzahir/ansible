@@ -1,0 +1,14 @@
+---
+- name: using handlers to our advantage
+  hosts: 192.168.0.191
+  handlers:
+    - name: creating joe account
+      user:
+        name: joe
+        state: present
+  tasks:
+    - name: installing telnet
+      yum:
+        name: telnet
+        state: present
+      notify: "creating joe account"  

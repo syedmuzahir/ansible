@@ -1,0 +1,25 @@
+---
+- name: name of our playbook
+  hosts: linoop
+  vars:
+    pack1: telnet
+    pack2: vsftpd
+    pack3: httpd
+  tasks:
+  - name: install packages
+    yum:
+      name:
+        - "{{ pack1 }}"
+        - "{{ pack2 }}"
+        - "{{ pack3 }}"
+      state: present
+  - name: start services
+    service:
+      name: "{{ item }}"
+      state: started
+    with_items:
+        - "vsftpd"
+        - "httpd"
+
+
+

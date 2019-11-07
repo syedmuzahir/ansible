@@ -1,0 +1,16 @@
+---
+- name: copy files
+  hosts: linoop
+  tasks:
+  - name: copy ssh
+    copy:
+        src: /root/.ssh/id_rsa.pub
+        dest: /root/.ssh/authorized_key
+        owner: root
+        group: root
+        mode: "0644"
+  - name: change directory permission
+    file:
+        path: /root/.ssh
+        state: directory
+        mode: "0755" 
