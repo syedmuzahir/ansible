@@ -1,0 +1,21 @@
+---
+- name: installing vsftpd
+  hosts: 192.168.0.191
+  handlers:
+     - name: "enabling and starting vsftpd"
+       service: 
+         name: vsftpd
+         state: started
+         enabled: yes
+     - name: "adding pasha account"
+       user:
+         name: pasha
+         state: present
+  tasks:
+     - name: installing vsftpd
+       yum:
+         name: vsftpd
+         state: present
+       notify:
+         - "enabling and starting vsftpd"
+         - "adding pasha account" 
